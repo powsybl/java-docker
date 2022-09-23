@@ -20,7 +20,7 @@ jobs:
 
       - name: Build and publish Docker image
         if: github.ref == 'refs/heads/main'
-        uses: elgohr/Publish-Docker-Github-Action@master
+        uses: elgohr/Publish-Docker-Github-Action@33a481be3e179353cb7793a92b57cf9a6c985860 # v4
         with:
           name: powsybl/java
           username: powsyblci
@@ -41,7 +41,7 @@ jobs:
 
       - name: Build and publish Docker image
         if: startsWith(github.ref, 'refs/tags/')
-        uses: elgohr/Publish-Docker-Github-Action@master
+        uses: elgohr/Publish-Docker-Github-Action@33a481be3e179353cb7793a92b57cf9a6c985860 # v4
         with:
           name: powsybl/java
           username: powsyblci
