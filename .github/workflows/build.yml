@@ -8,7 +8,7 @@ on:
 
 jobs:
   build:
-    uses: powsybl/github-ci/.github/workflows/build-base-docker-image-generic.yml@e78e224be174768e611f1d5bb19e66312a9460fd
+    uses: powsybl/github-ci/.github/workflows/build-base-docker-image-generic.yml@258b25ca0419bb9f3803b399cb329a616cdb6acb
     with:
       dockerImage: powsybl/java
       dockerUsername: powsyblci
