@@ -1,0 +1,21 @@
+name: Patch
+
+on:
+  workflow_dispatch:
+    inputs:
+      releaseVersion:
+        description: version to patch (vX.X)
+        required: true
+
+jobs:
+  run-patch:
+    uses: powsybl/github-ci/.github/workflows/patch-backend-app-generic.yml@XXX
+    with:
+      githubappId: ${{ vars.POWSYBL_ACTIONS_APPID }}
+      dockerImage: powsybl/java
+      dockerUsername: powsyblci
+      releaseVersion: ${{ github.event.inputs.releaseVersion }}
+    secrets:
+      githubappPrivateKey: ${{ secrets.POWSYBL_ACTIONS_SECRET }}
+      sonar-token: ${{ secrets.SONAR_TOKEN }}
+      docker-token: ${{ secrets.DOCKERHUB_TOKEN }}

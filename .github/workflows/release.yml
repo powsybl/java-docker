@@ -1,0 +1,25 @@
+name: Release
+
+on:
+  workflow_dispatch:
+    inputs:
+      releaseVersion:
+        description: Release version (vX.X)
+        required: true
+      gitReference:
+        description: SHA of the commit from where to release or branch name
+        required: true
+
+jobs:
+  run-release:
+    uses: powsybl/github-ci/.github/workflows/release-backend-app-generic.yml@XXX
+    with:
+      githubappId: ${{ vars.POWSYBL_ACTIONS_APPID }}
+      dockerImage: powsybl/java
+      dockerUsername: powsyblci
+      releaseVersion: ${{ github.event.inputs.releaseVersion }}
+      gitReference: ${{ github.event.inputs.gitReference }}
+    secrets:
+      githubappPrivateKey: ${{ secrets.POWSYBL_ACTIONS_SECRET }}
+      sonar-token: ${{ secrets.SONAR_TOKEN }}
+      docker-token: ${{ secrets.DOCKERHUB_TOKEN }}
