@@ -21,5 +21,4 @@ jobs:
       gitReference: ${{ github.event.inputs.gitReference }}
     secrets:
       githubappPrivateKey: ${{ secrets.POWSYBL_ACTIONS_SECRET }}
-      sonar-token: ${{ secrets.SONAR_TOKEN }}
       docker-token: ${{ secrets.DOCKERHUB_TOKEN }}

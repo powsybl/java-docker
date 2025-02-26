@@ -15,6 +15,5 @@ jobs:
       eventOrganizations: gridsuite
       eventType: java_updated
     secrets:
-      sonar-token: ${{ secrets.SONAR_TOKEN }}
       docker-token: ${{ secrets.DOCKERHUB_TOKEN }}
       repo-token: ${{ secrets.REPO_ACCESS_TOKEN }}
