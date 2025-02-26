@@ -1,6 +1,7 @@
 name: Patch
 
 on:
+  pull_request:
   workflow_dispatch:
     inputs:
       releaseVersion:
