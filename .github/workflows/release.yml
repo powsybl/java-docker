@@ -13,7 +13,7 @@ on:
 
 jobs:
   run-release:
-    uses: powsybl/github-ci/.github/workflows/release-base-docker-image-generic.yml@82f3403adc3bf4cc4fe5dbb4d8fff322b9b180ba
+    uses: powsybl/github-ci/.github/workflows/release-base-docker-image-generic.yml@e78e224be174768e611f1d5bb19e66312a9460fd
     with:
       githubappId: ${{ vars.POWSYBL_ACTIONS_APPID }}
       dockerImage: powsybl/java
