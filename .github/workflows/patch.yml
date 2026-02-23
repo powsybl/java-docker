@@ -9,7 +9,7 @@ on:
 
 jobs:
   run-patch:
-    uses: powsybl/github-ci/.github/workflows/patch-base-docker-image-generic.yml@0c71f00e40f49d9bbfc59acb821387e0751ab4d2
+    uses: powsybl/github-ci/.github/workflows/patch-base-docker-image-generic.yml@3ed0caeb3395e55868884f466d726ddaee877850
     with:
       githubappId: ${{ vars.POWSYBL_ACTIONS_APPID }}
       dockerImage: powsybl/java
