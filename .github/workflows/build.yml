@@ -12,10 +12,10 @@ jobs:
     with:
       dockerImage: powsybl/java
       dockerUsername: powsyblci
-      dockerRoUsername: rogridsuiteci
+      dockerRoUsername: powsyblci
       eventOrganizations: gridsuite
       eventType: java_updated
     secrets:
       DOCKERHUB_TOKEN: ${{ secrets.DOCKERHUB_TOKEN }}
-      docker-ro-token: ${{ secrets.DOCKERHUB_RO_TOKEN }}
+      docker-ro-token: ${{ secrets.DOCKERHUB_TOKEN }}
       repo-token: ${{ secrets.REPO_ACCESS_TOKEN }}
