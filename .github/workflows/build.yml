@@ -12,6 +12,7 @@ jobs:
     with:
       dockerImage: powsybl/java
       dockerUsername: powsyblci
+      dockerRoUsername: rogridsuiteci
       eventOrganizations: gridsuite
       eventType: java_updated
     secrets:
