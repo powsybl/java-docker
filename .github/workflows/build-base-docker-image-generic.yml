@@ -1,0 +1,50 @@
+on:
+  workflow_call:
+    inputs:
+      dockerImage:
+        required: true
+        type: string
+      dockerUsername:
+        description: 'Used to write latest images after the PR is merged in main'
+        required: true
+        type: string
+      eventOrganizations:
+        required: false
+        default: ''
+        type: string
+      eventType:
+        required: true
+        type: string
+      environment:
+        required: false
+        default: 'release'
+        type: string
+    secrets:
+      DOCKERHUB_TOKEN:
+        required: true
+      repo-token:
+        required: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    environment:
+      name: ${{ github.ref == 'refs/heads/main' && inputs.environment || '' }}
+    steps:
+      - name: Checkout sources
+        uses: actions/checkout@50fbc622fc4ef5163becd7fab6573eac35f8462e # v1 v1.2.0
+      
+      - name: Build and publish Docker image
+        uses: docker/build-push-action@10e90e3645eae34f1e60eeb005ba3a3d33f178e8 # v6.19.2
+        with:
+          context: .
+          push: ${{ github.ref == 'refs/heads/main' }}
+          tags: ${{ inputs.dockerImage }}:latest
+
+      - name: Broadcast update event
+        if: github.ref == 'refs/heads/main'
+        uses: gridsuite/broadcast-event@67201bc793618876822097ce2152b23b496a8227 # main
+        with:
+          token: ${{ secrets.repo-token }}
+          organizations: ${{ inputs.eventOrganizations }}
+          event-type: ${{ inputs.eventType }}
