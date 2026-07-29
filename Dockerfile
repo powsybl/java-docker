@@ -1,9 +1,7 @@
-FROM powsybl/iodhi-eclipse-temurin:25.0.3.9-jdk-debian13-dev AS dev
-RUN mkdir -p /home/nonroot/.itools
+FROM eclipse-temurin:25-jre
 
-FROM powsybl/iodhi-eclipse-temurin:25.0.3.9-debian13
-
-USER nonroot
-WORKDIR /home/nonroot
-COPY --from=dev --chown=nonroot:nonroot /home/nonroot/.itools /home/nonroot/.itools
+RUN userdel -r ubuntu && useradd -ms /bin/bash powsybl
+USER powsybl
+WORKDIR /home/powsybl
+RUN mkdir .itools
 
